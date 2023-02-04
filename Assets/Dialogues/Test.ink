@@ -1,0 +1,3 @@
+Hello I'm a test Dialogue!
+And thank you to find me!
+Now please choose Pokemon...
