@@ -110,23 +110,31 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public void SetDialogue(TextAsset inkJSON)
+    {
+		currentStory = new Story(inkJSON.text);
+		dialogueVariables.StartListening(currentStory);
+		//Reset Dialogue Panel
+		dialogueNameText.text = "No name";
+		portraitAnimator.Play("default");
+		layoutAnimator.Play("right");
+	}
+
+    public void StartDialogue()
+    {
+		dialogueIsPlaying = true;
+		dialoguePanel.SetActive(true);
+		ContinueStory();
+	}
+
     public void EnterDialogueMode(TextAsset inkJSON)
     {
-        currentStory = new Story(inkJSON.text);
-        dialogueIsPlaying = true;
-        dialoguePanel.SetActive(true);
-
-        dialogueVariables.StartListening(currentStory);
-
-        //Reset Dialogue Panel
-        dialogueNameText.text = "No name";
-        portraitAnimator.Play("default");
-        layoutAnimator.Play("right");
-
+        SetDialogue(inkJSON);
+        StartDialogue();
         ContinueStory();
     }
 
-    private void ExitDialogueMode()
+    public void ExitDialogueMode()
     {
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
@@ -158,7 +166,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DisplayLine(string line)
+	private IEnumerator DisplayLine(string line)
     {
         //Empty Dialogue text
         dialogueText.text = line;
@@ -356,6 +364,10 @@ public class DialogueManager : MonoBehaviour
         return variableValue;
     }
 
+	public void InvokeStoryFunction(string functionName, object value)
+	{
+        currentStory.EvaluateFunction(functionName, value);
+	}
 
     //This method will called anytime the aplication exits.
     public void OnApplicationQuit()

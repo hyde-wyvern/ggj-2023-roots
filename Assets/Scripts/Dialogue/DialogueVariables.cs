@@ -14,12 +14,12 @@ public class DialogueVariables
         //Compile the story
         globalVariablesStory = new Story(loadGloblasJSON.text);
 
-        //if we have saved data, 
-        if(PlayerPrefs.HasKey(saveVariablesKey))
-        {
-            string jsonState = PlayerPrefs.GetString(saveVariablesKey);
-            globalVariablesStory.state.LoadJson(jsonState);
-        }
+        ////if we have saved data, 
+        //if(PlayerPrefs.HasKey(saveVariablesKey))
+        //{
+        //    string jsonState = PlayerPrefs.GetString(saveVariablesKey);
+        //    globalVariablesStory.state.LoadJson(jsonState);
+        //}
 
         //Initialize the dictionary
         variables = new Dictionary<string, Ink.Runtime.Object>();
@@ -31,7 +31,7 @@ public class DialogueVariables
         }
     }
 
-    public void SaveVariables()
+	public void SaveVariables()
     {
         if(globalVariablesStory != null)
         {
