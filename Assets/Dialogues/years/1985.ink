@@ -13,5 +13,9 @@ That's not true #speaker: You #layout: left #portrait: mom_adult #audio: mom_adu
 There are lots of stuff that make me lose my nerves, that make me anxious and afraid #speaker: You #layout: left #portrait: mom_adult #audio: mom_adult
 And how do you go about that? #speaker: Rivan #layout: right #portrait: dad #audio: dad
 I don't, and you shouldn't either... #speaker: You #layout: left #portrait: mom_adult #audio: mom_adult
+... #speaker: Rivan #layout: right #portrait: dad #audio: dad
+What?! #speaker: You #layout: left #portrait: mom_adult #audio: mom_adult
+You're fascinating. #speaker: Rivan #layout: right #portrait: dad #audio: dad
+\* blushes *  #speaker: You #layout: left #portrait: mom_adult #audio: mom_adult
 -> END
 

@@ -1,4 +1,5 @@
 === year_1991 ===
 
-1991 #portrait: Hyde_Furro #layout:left #audio: beep_3
+1990 #speaker: narrator #portrait: incognito #layout: narrator #audio: narrator
+
 -> END

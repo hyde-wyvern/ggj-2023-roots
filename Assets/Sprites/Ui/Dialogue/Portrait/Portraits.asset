@@ -45,3 +45,13 @@ MonoBehaviour:
     <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
   - <Id>k__BackingField: dad
     <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: matheo
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: you_baby
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: you_kid
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: you_teen
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: mom_blurry
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
