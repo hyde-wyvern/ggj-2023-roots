@@ -7,21 +7,21 @@
             "actions": [
                 {
                     "name": "MouseLeftClick",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "ee2c4ea0-c8df-497f-aed1-ca7016910f7e",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold",
                     "initialStateCheck": false
                 },
                 {
                     "name": "MouseScroll",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "9741aa12-3b4a-4c07-a0b9-d391e643df9a",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
+                    "expectedControlType": "Axis",
+                    "processors": "Normalize(min=-1,max=1)",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -37,15 +37,37 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "e3e00f93-dfa5-4431-af8f-a3eea0480c90",
-                    "path": "<Mouse>/scroll",
+                    "name": "1D Axis",
+                    "id": "1658fbdd-e28c-4e26-9031-0aa696a6b933",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseScroll",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Negative",
+                    "id": "34a9b658-65ef-4a3d-aff5-b7413ea5dffd",
+                    "path": "<Mouse>/scroll/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "MouseScroll",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Positive",
+                    "id": "03b29cbf-5849-4906-8759-6b01168642f0",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }
