@@ -329,6 +329,7 @@ public class DialogueManager : MonoBehaviour
                     break;
                 case LAYOUT_TAG:
                     layoutAnimator.Play(tagValue);
+                    Debug.Log("Layout: " + tagValue + " | Active: " + layoutAnimator.isActiveAndEnabled + " | Initialized: " + layoutAnimator.GetCurrentAnimatorStateInfo(0).IsName(tagValue));
                     break;
                 case AUDIO_TAG:
                     SetCurrentAudioInfo(tagValue);
