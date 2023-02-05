@@ -19,7 +19,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dialogueText;
     [Space]
     [SerializeField] private TextMeshProUGUI dialogueNameText;
-    [SerializeField] private Animator portraitAnimator;
+    [SerializeField] private PortraitSetter portraitSetter;
     private Animator layoutAnimator;
     [Space]
     [SerializeField] private GameObject btnContinue;
@@ -116,8 +116,8 @@ public class DialogueManager : MonoBehaviour
 		dialogueVariables.StartListening(currentStory);
 		//Reset Dialogue Panel
 		dialogueNameText.text = "No name";
-		portraitAnimator.Play("default");
-		layoutAnimator.Play("right");
+		portraitSetter.SetPortrait("incognito");
+		//layoutAnimator.Play("right");
 	}
 
     public void StartDialogue()
@@ -336,7 +336,7 @@ public class DialogueManager : MonoBehaviour
                     dialogueNameText.text = tagValue;
                     break;
                 case PORTRAIT_TAG:
-                    portraitAnimator.Play(tagValue);
+					portraitSetter.SetPortrait(tagValue);
                     break;
                 case LAYOUT_TAG:
                     layoutAnimator.Play(tagValue);

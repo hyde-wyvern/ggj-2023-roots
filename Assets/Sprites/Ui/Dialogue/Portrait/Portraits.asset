@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380b43497e3714b4786ceb8477a48edd, type: 3}
+  m_Name: Portraits
+  m_EditorClassIdentifier: 
+  portraits:
+  - <Id>k__BackingField: incognito
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: grandma_adult
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: grandma_blurry
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: grandma_old
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: mom_baby
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: mom_kid
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: mom_teen
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: mom_adult
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: grandpa_adult
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: grandpa_old
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: uncle_baby
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: uncle_kid
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
+  - <Id>k__BackingField: dog_mom
+    <Sprite>k__BackingField: {fileID: 21300000, guid: 9cde41aef6d2d9c4789b2e4d44d2e224, type: 3}
