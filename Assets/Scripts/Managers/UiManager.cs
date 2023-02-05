@@ -6,6 +6,8 @@ using TMPro;
 
 public class UiManager : MonoBehaviour
 {
+    public TextMeshProUGUI actualHour;
+    public TextMeshProUGUI actualYear;
     public TextMeshProUGUI answerCodeTxt;
 
     [Header("Audio Control")]
