@@ -6,12 +6,16 @@ using UnityEngine.Video;
 
 public class TimeManager : MonoBehaviour
 {
+    private UiManager uiManager;
+    private CameraPanNPinch cameraPanNPinch;
+
 	[Header("Yearly Dialogue Settings")]
 	public TextAsset timeBaseDialogue;
     public float delay = 0.5f;
 
     [Header("Actual Year")]
     public float actualYear = 2000;
+    public int aYear = 1965;
 
     [Header("Add times to the time")]
     public float addTime = 0;
@@ -20,19 +24,71 @@ public class TimeManager : MonoBehaviour
 
     [Header("Boundaries")]
     public float maxYear = 2013;
-    public float minYear = 1965;
+    public float minYear = 1965;    
 
-    [SerializeField] private VideoPlayer staticVideo;
-    [SerializeField] private GameObject staticObjectVideo;
+
+    [Header("VHS Effects")]
+    [SerializeField] private string[] allMonths = null;
+    [SerializeField] private string[] allDays = null;
+    [SerializeField] private string[] allYearsCombinations = null;
+    [Space]
+    [SerializeField] private string[] allTimes = null;
+    [SerializeField] private string[] allHourCombinations = null;
+    [Space]
+    public VideoPlayer staticVideo;
+    public GameObject staticObjectVideo;
+    [Space]
+    private int randomTimeHour;
+    private int randomTimeMinute;
+    private string time = null;
+
+    private void Awake()
+    {
+        uiManager = FindObjectOfType<UiManager>();
+        cameraPanNPinch = FindObjectOfType<CameraPanNPinch>();
+
+
+        SetAllRandomsCombinations();
+        aYear = (int)actualYear;
+    }
+
+    private void SetAllRandomsCombinations()
+    {
+        int totalOfYears = (int)maxYear - (int)minYear;
+        allYearsCombinations = new string[totalOfYears];
+        allHourCombinations = new string[totalOfYears];
+
+        for (int i = 0; i < allYearsCombinations.Length; i++)
+        {
+            allYearsCombinations[i] = allMonths[Random.Range(0, allMonths.Length)] + " " + allDays[Random.Range(0, allDays.Length)] + " ";
+
+            if(allYearsCombinations[i].Substring(0, 3) == "FEB")
+            {
+                allYearsCombinations[i] = allMonths[1] + " " + allDays[Random.Range(0, 28)] + " ";
+            }
+        }
+
+        for (int h = 0; h < allHourCombinations.Length; h++)
+        {
+            randomTimeHour = Random.Range(0, 12);
+            randomTimeMinute = Random.Range(0, 60);
+
+            time = string.Format("{0:00}:{1:00}", randomTimeHour, randomTimeMinute);
+
+            allHourCombinations[h] = allTimes[Random.Range(0, allTimes.Length)] + " " + time;
+        }
+
+        SetVHSInfo();
+    }
 
     void Start()
     {
-        TravelInTime(0);
+        //TravelInTime(0);
     }
 
     void FixedUpdate()
     {
-        if (addOrLessTime)
+        if (addOrLessTime)            
             SetTime();
     }
 
@@ -46,7 +102,23 @@ public class TimeManager : MonoBehaviour
 
 		actualYear += addTime * Time.fixedDeltaTime;
         actualYear = Mathf.Clamp(actualYear, minYear, maxYear);
-	}
+
+        aYear = (int)actualYear;
+
+        SetVHSInfo();
+    }
+
+     private void SetVHSInfo()
+    {
+        int date = (int)maxYear - aYear;
+        //VHS Hour
+        uiManager.actualHour.text = allHourCombinations[date - 1];
+
+        //VHS Date
+        uiManager.actualYear.text = allYearsCombinations[date - 1] + aYear.ToString("F0");
+
+        uiManager.actualYearOnly.text = aYear.ToString();
+    }
 
     private void AddOrLessTime(float timeYear) => addTime += timeYear * Time.fixedDeltaTime;
      
@@ -77,7 +149,7 @@ public class TimeManager : MonoBehaviour
     public void RunYearlyDialogue()
     {
 		DialogueManager.GetInstance().SetDialogue(timeBaseDialogue);
-		DialogueManager.GetInstance().InvokeStoryFunction("setYear", actualYear);
+		DialogueManager.GetInstance().InvokeStoryFunction("setYear", aYear);
 
 		if (addOrLessTime) {
             StopAllCoroutines();
@@ -98,10 +170,12 @@ public class TimeManager : MonoBehaviour
 	}
 
     
-    private void SetStatic(bool showStatic)
+    public void SetStatic(bool showStatic)
     {
 		staticObjectVideo.gameObject.SetActive(showStatic);
-		addOrLessTime = showStatic;
+        uiManager.actualYearOnly.gameObject.SetActive(showStatic);
+        cameraPanNPinch.canMove = !showStatic;
+        addOrLessTime = showStatic;
 		if(showStatic) staticVideo.Play();
         else staticVideo.Stop();
 	}
