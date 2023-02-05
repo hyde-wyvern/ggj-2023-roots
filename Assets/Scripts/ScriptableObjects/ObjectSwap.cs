@@ -24,7 +24,7 @@ public class ObjectSwap : MonoBehaviour
 
     private void FixedUpdate()
     {
-        yearToChange = timeManager.actualYear;
+        yearToChange = timeManager.aYear;
 
         for (int i = 0; i < yearsAlongTime.Length; i++)
         {

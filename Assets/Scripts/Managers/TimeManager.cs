@@ -12,6 +12,7 @@ public class TimeManager : MonoBehaviour
 
     [Header("Actual Year")]
     public float actualYear = 2000;
+    public int aYear = 1965;
 
     [Header("Add times to the time")]
     public float addTime = 0;
@@ -43,6 +44,7 @@ public class TimeManager : MonoBehaviour
         uiManager = FindObjectOfType<UiManager>();
         
         SetAllRandomsCombinations();
+        aYear = (int)actualYear;
     }
 
     private void SetAllRandomsCombinations()
@@ -96,17 +98,19 @@ public class TimeManager : MonoBehaviour
 		actualYear += addTime * Time.fixedDeltaTime;
         actualYear = Mathf.Clamp(actualYear, minYear, maxYear);
 
+        aYear = (int)actualYear;
+
         SetVHSInfo();
     }
 
      private void SetVHSInfo()
     {
-        int date = (int)maxYear - (int)actualYear;
+        int date = (int)maxYear - aYear;
         //VHS Hour
         uiManager.actualHour.text = allHourCombinations[date - 1];
 
         //VHS Date
-        uiManager.actualYear.text = allYearsCombinations[date - 1] + actualYear.ToString("F0");
+        uiManager.actualYear.text = allYearsCombinations[date - 1] + aYear.ToString("F0");
     }
 
     private void AddOrLessTime(float timeYear) => addTime += timeYear * Time.fixedDeltaTime;
@@ -138,7 +142,7 @@ public class TimeManager : MonoBehaviour
     public void RunYearlyDialogue()
     {
 		DialogueManager.GetInstance().SetDialogue(timeBaseDialogue);
-		DialogueManager.GetInstance().InvokeStoryFunction("setYear", actualYear);
+		DialogueManager.GetInstance().InvokeStoryFunction("setYear", aYear);
 
 		if (addOrLessTime) {
             StopAllCoroutines();

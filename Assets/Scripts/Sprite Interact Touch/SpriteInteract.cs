@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class SpriteInteract : MonoBehaviour
 {
@@ -12,35 +13,21 @@ public class SpriteInteract : MonoBehaviour
     [Header("Object Event")]
     [SerializeField, Tooltip("Make sure to use a public void")] private UnityEvent interactAction;
 
-    //Not in inspector
-    private Collider2D _collider;
-
     // Start is called before the first frame update
     void Awake()
     {
-        _collider = GetComponent<Collider2D>();
+        if(cam == null) 
+        {
+            cam = FindObjectOfType<Camera>();
+        }
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        CheckForTouch();
-    }
-
-    bool CheckForTouch()
+    public void OnMouseDown()
     {
         if (cam.orthographicSize <= minDistance)
-        {
-            if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-            {
-                var wp = cam.ScreenToWorldPoint(Input.GetTouch(0).position);
-                var touchPosition = new Vector2(wp.x, wp.y);
-
-                if (_collider == Physics2D.OverlapPoint(touchPosition))
-                    interactAction.Invoke();
-            }
+        { 
+            Debug.Log("hit");
+            interactAction.Invoke();
         }
-
-        return false;
     }
 }
