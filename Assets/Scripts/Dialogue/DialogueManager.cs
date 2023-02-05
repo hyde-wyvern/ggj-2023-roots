@@ -51,6 +51,7 @@ public class DialogueManager : MonoBehaviour
     private bool canContinueToNextLine = false;
     private Coroutine displayLineCoroutune;
     private Touch myTouch;
+    private CameraPanNPinch CameraPanNPinch;
 
     private void Awake()
     {
@@ -72,6 +73,7 @@ public class DialogueManager : MonoBehaviour
         layoutAnimator = dialoguePanel.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         currentAudioInfo = defaultAudioInfo;
+        CameraPanNPinch = FindObjectOfType<CameraPanNPinch>();
     }
 
     private void Start()
@@ -114,6 +116,7 @@ public class DialogueManager : MonoBehaviour
 		dialogueIsPlaying = true;
 		dialoguePanel.SetActive(true);
 		ContinueStory();
+        CameraPanNPinch.canMove = false;
 	}
 
     public void EnterDialogueMode(TextAsset inkJSON)
@@ -128,7 +131,7 @@ public class DialogueManager : MonoBehaviour
         dialogueIsPlaying = false;
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
-        
+        CameraPanNPinch.canMove = true;
     }
 
     public void ContinueStory()

@@ -8,6 +8,7 @@ public class UiManager : MonoBehaviour
 {
     public TextMeshProUGUI actualHour;
     public TextMeshProUGUI actualYear;
+    public TextMeshProUGUI actualYearOnly;
     public TextMeshProUGUI answerCodeTxt;
 
     [Header("Audio Control")]

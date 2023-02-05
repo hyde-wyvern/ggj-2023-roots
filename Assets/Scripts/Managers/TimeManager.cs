@@ -27,6 +27,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private GameObject staticObjectVideo;
 
     private UiManager uiManager;
+    private CameraPanNPinch cameraPanNPinch;
 
     [Header("VHS Effects")]
     [SerializeField] private string[] allMonths = null;
@@ -42,7 +43,9 @@ public class TimeManager : MonoBehaviour
     private void Awake()
     {
         uiManager = FindObjectOfType<UiManager>();
-        
+        cameraPanNPinch = FindObjectOfType<CameraPanNPinch>();
+
+
         SetAllRandomsCombinations();
         aYear = (int)actualYear;
     }
@@ -83,7 +86,7 @@ public class TimeManager : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (addOrLessTime)
+        if (addOrLessTime)            
             SetTime();
     }
 
@@ -111,6 +114,8 @@ public class TimeManager : MonoBehaviour
 
         //VHS Date
         uiManager.actualYear.text = allYearsCombinations[date - 1] + aYear.ToString("F0");
+
+        uiManager.actualYearOnly.text = aYear.ToString();
     }
 
     private void AddOrLessTime(float timeYear) => addTime += timeYear * Time.fixedDeltaTime;
@@ -166,7 +171,9 @@ public class TimeManager : MonoBehaviour
     private void SetStatic(bool showStatic)
     {
 		staticObjectVideo.gameObject.SetActive(showStatic);
-		addOrLessTime = showStatic;
+        uiManager.actualYearOnly.gameObject.SetActive(showStatic);
+        cameraPanNPinch.canMove = !showStatic;
+        addOrLessTime = showStatic;
 		if(showStatic) staticVideo.Play();
         else staticVideo.Stop();
 	}
