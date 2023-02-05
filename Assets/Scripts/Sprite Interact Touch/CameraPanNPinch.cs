@@ -13,6 +13,8 @@ public class CameraPanNPinch : MonoBehaviour
     [SerializeField, Tooltip("Limit the screen by this sprite")] private SpriteRenderer mapRenderer;
     private float mapMinX, mapMaxX, mapMinY, mapMaxY;
 
+    public bool canMove = true;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -21,14 +23,16 @@ public class CameraPanNPinch : MonoBehaviour
 
         mapMinY = mapRenderer.transform.position.y - mapRenderer.bounds.size.y / 2f;
         mapMaxY = mapRenderer.transform.position.y + mapRenderer.bounds.size.y / 2f;
-        //m_PlayerInput.CameraMove.MouseScroll.performed += ctx => Zoom();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        PanCamera();
-        Zoom();
+        if(canMove)
+        {
+            PanCamera();
+            Zoom();
+        }        
     }
 
     private void PanCamera()
@@ -45,9 +49,6 @@ public class CameraPanNPinch : MonoBehaviour
 
             //move the camera by that distance
             camMain.transform.position = ClampCamera(camMain.transform.position + difference);
-            //camMain.orthographicSize = Mathf.Clamp(camMain.orthographicSize, minCamSize, maxCamSize);
-            //camMain.transform.position = ClampCamera(camMain.transform.position + difference);
-            //camMain.transform.position += difference;
         }
         
     }
