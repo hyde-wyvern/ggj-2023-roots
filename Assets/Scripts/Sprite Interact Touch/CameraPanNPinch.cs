@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class CameraPanNPinch : MonoBehaviour
 {
     [SerializeField] private Camera camMain;
+    [SerializeField] private bool leftClickHold = false;
     private Vector3 dragOrigin;
     [SerializeField] private float zoomStep, minCamSize, maxCamSize;
     [Space]
@@ -37,25 +38,27 @@ public class CameraPanNPinch : MonoBehaviour
 
     private void PanCamera()
     {
-        //if(m_PlayerInput.CameraMove.MouseLeftClick.IsPressed()) 
-        if(Input.GetMouseButtonDown(0)) 
+        if (!Mouse.current.leftButton.isPressed) leftClickHold = false;
+        
+        if (Mouse.current.leftButton.isPressed && !leftClickHold)
         {
-            dragOrigin = camMain.ScreenToWorldPoint(Input.mousePosition);            
+            dragOrigin = camMain.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            leftClickHold = true;
         }
 
-        if(Input.GetMouseButton(0))
+        if (Mouse.current.leftButton.isPressed && leftClickHold)
         {
-            Vector3 difference = dragOrigin - camMain.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 difference = dragOrigin - camMain.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
             //move the camera by that distance
             camMain.transform.position = ClampCamera(camMain.transform.position + difference);
         }
-        
+
     }
 
     private void Zoom()
     {
-        zoomStep = Input.GetAxis("Mouse ScrollWheel");
+        zoomStep = Mouse.current.scroll.ReadValue().normalized.y;
         float newSize = camMain.orthographicSize - zoomStep;
 
         camMain.orthographicSize = Mathf.Clamp(newSize, minCamSize, maxCamSize);
