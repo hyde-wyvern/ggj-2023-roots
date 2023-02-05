@@ -44,7 +44,4 @@ INCLUDE years/2007.ink
 INCLUDE years/2008.ink
 INCLUDE years/2009.ink
 INCLUDE years/2010.ink
-INCLUDE years/2011.ink
-INCLUDE years/2012.ink
-INCLUDE years/2013.ink
 INCLUDE years/no_year.ink

@@ -1,1 +1,1 @@
-VAR current_year = 1965.2
+VAR current_year = 1967

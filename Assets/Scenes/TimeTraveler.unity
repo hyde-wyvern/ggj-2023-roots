@@ -288,11 +288,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBaseDialogue: {fileID: 4900000, guid: 30ede0dc3c8c1904bab1d1c18064f16c, type: 3}
   delay: 0.5
-  actualYear: 2013
+  actualYear: 1966
   addTime: 0.005
   addToTime: 1
   addOrLessTime: 0
-  maxYear: 2013
+  maxYear: 2010
   minYear: 1965
   staticVideo: {fileID: 322307411}
   staticObjectVideo: {fileID: 327857216}
@@ -1186,7 +1186,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3e5a9716f96a1184ba1c5d0308e15f68, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -3738,6 +3738,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e56837f41fd91b4e921fcdcf3a1885c, type: 2}
   - {fileID: 11400000, guid: 5898147b9025f0b4ea25eb89ced75bd8, type: 2}
   - {fileID: 11400000, guid: babbe19c50f655b4d8663a104b9105a8, type: 2}
+  - {fileID: 11400000, guid: 56ac0ad6cf906214782a86c96d69a93f, type: 2}
+  - {fileID: 11400000, guid: a6d546d80c3dc594ba6363f8b659ecc9, type: 2}
+  - {fileID: 11400000, guid: 607e797591bc2c546b2f057f593658f5, type: 2}
+  - {fileID: 11400000, guid: 9b625e6d8b39b96428862e4c1b974718, type: 2}
+  - {fileID: 11400000, guid: 90ce4aa2b4c82eb4eb39957c3447b2d4, type: 2}
+  - {fileID: 11400000, guid: 5829f2895c48cdc44be9fc57d1d11a6e, type: 2}
+  - {fileID: 11400000, guid: 8bcd7574e3773e14a8d4e1695e98c9b8, type: 2}
+  - {fileID: 11400000, guid: 44689663bf92de54192c68712c1643ba, type: 2}
+  - {fileID: 11400000, guid: 102752c5fcdc5a84284bf89637b16c24, type: 2}
   makePreditable: 1
 --- !u!1 &1989511194
 GameObject:

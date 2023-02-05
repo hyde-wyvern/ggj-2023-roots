@@ -2,9 +2,6 @@ INCLUDE globals.ink
 INCLUDE year_flows.ink
 INCLUDE utilities.ink
 
-
-You traveled to <>
-
 ~ temp rounded_current_year = INT(current_year)
 
 { rounded_current_year:
@@ -100,12 +97,6 @@ You traveled to <>
         -> year_2009
     - 2010:
         -> year_2010
-    - 2011:
-        -> year_2011
-    - 2012:
-        -> year_2012
-    - 2013:
-        -> year_2013
     - else:
         -> no_year
 }
