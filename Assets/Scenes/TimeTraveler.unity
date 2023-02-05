@@ -420,13 +420,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7641072fad1ff847a88faf1c832f84d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBaseDialogue: {fileID: 0}
+  timeBaseDialogue: {fileID: 4900000, guid: 30ede0dc3c8c1904bab1d1c18064f16c, type: 3}
   delay: 0.5
-  actualYear: 1985
+  actualYear: 1965
   addTime: 0.005
   addToTime: 1
   addOrLessTime: 0
-  maxYear: 2013
+  maxYear: 2010
   minYear: 1965
   staticVideo: {fileID: 322307411}
   staticObjectVideo: {fileID: 327857216}
@@ -4264,7 +4264,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1192319300
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7711,7 +7711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   typingSpeed: 0.03
-  loadGloblasJSON: {fileID: 4900000, guid: a1d4c568b1533cc42abbb26f0c9f4176, type: 3}
+  loadGloblasJSON: {fileID: 4900000, guid: c052de3e3e5a5654e8cc9c1dfcce703f, type: 3}
   dialoguePanel: {fileID: 2069282355}
   dialogueText: {fileID: 359509094}
   dialogueNameText: {fileID: 294334790}
