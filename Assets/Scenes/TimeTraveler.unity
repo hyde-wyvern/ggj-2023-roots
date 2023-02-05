@@ -2821,14 +2821,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1319200534}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a62fca5b9c3b4449b0f5ee4d20d7db4, type: 3}
+  m_Script: {fileID: 11500000, guid: ee64ebb2664493347b9bf7f670a23566, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1319200536}
-  zoomSpeed: 0.001
-  minCamSize: 1
-  maxCamSize: 6.25
-  mapRenderer: {fileID: 412617219}
+  camMain: {fileID: 1319200536}
+  zoomStep: 3
+  minCamSize: 3
+  maxCamSize: 10
+  mapRenderer: {fileID: 0}
 --- !u!1 &1549578897
 GameObject:
   m_ObjectHideFlags: 0
