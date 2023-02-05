@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using Ink.Runtime;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
 public class DialogueManager : MonoBehaviour
 {
+    private PlayerMove m_PlayerInput;
+
     [Header("Parameters")]
     [SerializeField] private float typingSpeed = 0.04f;
 
@@ -24,6 +27,7 @@ public class DialogueManager : MonoBehaviour
     [Space]
     [SerializeField] private GameObject btnContinue;
     [SerializeField] private GameObject continueIcon;
+    [SerializeField] private bool canContinue;
 
     [Header("Choices UI")]
     [SerializeField] private GameObject[] choices;
@@ -55,6 +59,8 @@ public class DialogueManager : MonoBehaviour
 
     private void Awake()
     {
+        m_PlayerInput = new PlayerMove();
+
         if (instance != null)
             Debug.LogError("Found more than one Dialogue Manager in the scene");
 
@@ -132,6 +138,7 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false);
         dialogueText.text = "";
         CameraPanNPinch.canMove = true;
+        canContinue = false;
     }
 
     public void ContinueStory()
@@ -167,6 +174,7 @@ public class DialogueManager : MonoBehaviour
         //Hide items
         continueIcon.SetActive(false);
         btnContinue.SetActive(false);
+        canContinue = false;
         HideChoices();
 
         canContinueToNextLine = false;
@@ -198,6 +206,7 @@ public class DialogueManager : MonoBehaviour
         //After the entire line has finished displayins
         continueIcon.SetActive(true);
         btnContinue.SetActive(true);
+        canContinue = true;
         DisplayChoices();
 
         canContinueToNextLine = true;
@@ -367,4 +376,24 @@ public class DialogueManager : MonoBehaviour
         if(dialogueVariables != null)
             dialogueVariables.SaveVariables();
     }
+
+    private void FixedUpdate()
+    {
+        if(canContinue)
+        {
+            if (m_PlayerInput.CameraMove.ContinueDialogues.IsPressed())
+                ContinueStory();
+        }
+    }
+
+    #region Input Enable / Disable
+    private void OnEnable()
+    {
+        m_PlayerInput.Enable();
+    }
+    private void OnDisable()
+    {
+        m_PlayerInput.Disable();
+    }
+    #endregion
 }

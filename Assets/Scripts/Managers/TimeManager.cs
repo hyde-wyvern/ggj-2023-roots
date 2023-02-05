@@ -6,6 +6,9 @@ using UnityEngine.Video;
 
 public class TimeManager : MonoBehaviour
 {
+    private UiManager uiManager;
+    private CameraPanNPinch cameraPanNPinch;
+
 	[Header("Yearly Dialogue Settings")]
 	public TextAsset timeBaseDialogue;
     public float delay = 0.5f;
@@ -21,13 +24,8 @@ public class TimeManager : MonoBehaviour
 
     [Header("Boundaries")]
     public float maxYear = 2013;
-    public float minYear = 1965;
+    public float minYear = 1965;    
 
-    [SerializeField] private VideoPlayer staticVideo;
-    [SerializeField] private GameObject staticObjectVideo;
-
-    private UiManager uiManager;
-    private CameraPanNPinch cameraPanNPinch;
 
     [Header("VHS Effects")]
     [SerializeField] private string[] allMonths = null;
@@ -36,6 +34,10 @@ public class TimeManager : MonoBehaviour
     [Space]
     [SerializeField] private string[] allTimes = null;
     [SerializeField] private string[] allHourCombinations = null;
+    [Space]
+    public VideoPlayer staticVideo;
+    public GameObject staticObjectVideo;
+    [Space]
     private int randomTimeHour;
     private int randomTimeMinute;
     private string time = null;
@@ -81,7 +83,7 @@ public class TimeManager : MonoBehaviour
 
     void Start()
     {
-        TravelInTime(0);
+        //TravelInTime(0);
     }
 
     void FixedUpdate()
@@ -168,7 +170,7 @@ public class TimeManager : MonoBehaviour
 	}
 
     
-    private void SetStatic(bool showStatic)
+    public void SetStatic(bool showStatic)
     {
 		staticObjectVideo.gameObject.SetActive(showStatic);
         uiManager.actualYearOnly.gameObject.SetActive(showStatic);

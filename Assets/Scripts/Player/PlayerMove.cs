@@ -44,6 +44,24 @@ public partial class @PlayerMove : IInputActionCollection2, IDisposable
                     ""processors"": ""Normalize(min=-1,max=1)"",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ContinueDialogues"",
+                    ""type"": ""Button"",
+                    ""id"": ""093f769c-8522-4169-8537-ea6ee2a4e016"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PressAnyKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd636e4b-7e51-4a43-831a-1b84f6f0e315"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -90,6 +108,83 @@ public partial class @PlayerMove : IInputActionCollection2, IDisposable
                     ""action"": ""MouseScroll"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cfdcfb4f-7b18-4cf2-823e-2924601dac03"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ContinueDialogues"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""64f6ed2d-2a54-4c8e-a8a7-3b2ff441a6f6"",
+                    ""path"": ""<Keyboard>/anyKey"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressAnyKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f89760dd-722e-42a9-b276-f11eed5037aa"",
+                    ""path"": ""<Mouse>/backButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressAnyKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""25c16107-418d-4da1-9eeb-f09de3769886"",
+                    ""path"": ""<Mouse>/forwardButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressAnyKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d9f5059-4479-4c5a-b062-7a08da68f085"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressAnyKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e3444724-40cc-4c7b-808e-01f9216c6e28"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressAnyKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e252d84-ac0d-4139-893c-85d39782f79d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PressAnyKey"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -100,6 +195,8 @@ public partial class @PlayerMove : IInputActionCollection2, IDisposable
         m_CameraMove = asset.FindActionMap("CameraMove", throwIfNotFound: true);
         m_CameraMove_MouseLeftClick = m_CameraMove.FindAction("MouseLeftClick", throwIfNotFound: true);
         m_CameraMove_MouseScroll = m_CameraMove.FindAction("MouseScroll", throwIfNotFound: true);
+        m_CameraMove_ContinueDialogues = m_CameraMove.FindAction("ContinueDialogues", throwIfNotFound: true);
+        m_CameraMove_PressAnyKey = m_CameraMove.FindAction("PressAnyKey", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -161,12 +258,16 @@ public partial class @PlayerMove : IInputActionCollection2, IDisposable
     private ICameraMoveActions m_CameraMoveActionsCallbackInterface;
     private readonly InputAction m_CameraMove_MouseLeftClick;
     private readonly InputAction m_CameraMove_MouseScroll;
+    private readonly InputAction m_CameraMove_ContinueDialogues;
+    private readonly InputAction m_CameraMove_PressAnyKey;
     public struct CameraMoveActions
     {
         private @PlayerMove m_Wrapper;
         public CameraMoveActions(@PlayerMove wrapper) { m_Wrapper = wrapper; }
         public InputAction @MouseLeftClick => m_Wrapper.m_CameraMove_MouseLeftClick;
         public InputAction @MouseScroll => m_Wrapper.m_CameraMove_MouseScroll;
+        public InputAction @ContinueDialogues => m_Wrapper.m_CameraMove_ContinueDialogues;
+        public InputAction @PressAnyKey => m_Wrapper.m_CameraMove_PressAnyKey;
         public InputActionMap Get() { return m_Wrapper.m_CameraMove; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -182,6 +283,12 @@ public partial class @PlayerMove : IInputActionCollection2, IDisposable
                 @MouseScroll.started -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnMouseScroll;
                 @MouseScroll.performed -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnMouseScroll;
                 @MouseScroll.canceled -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnMouseScroll;
+                @ContinueDialogues.started -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnContinueDialogues;
+                @ContinueDialogues.performed -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnContinueDialogues;
+                @ContinueDialogues.canceled -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnContinueDialogues;
+                @PressAnyKey.started -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnPressAnyKey;
+                @PressAnyKey.performed -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnPressAnyKey;
+                @PressAnyKey.canceled -= m_Wrapper.m_CameraMoveActionsCallbackInterface.OnPressAnyKey;
             }
             m_Wrapper.m_CameraMoveActionsCallbackInterface = instance;
             if (instance != null)
@@ -192,6 +299,12 @@ public partial class @PlayerMove : IInputActionCollection2, IDisposable
                 @MouseScroll.started += instance.OnMouseScroll;
                 @MouseScroll.performed += instance.OnMouseScroll;
                 @MouseScroll.canceled += instance.OnMouseScroll;
+                @ContinueDialogues.started += instance.OnContinueDialogues;
+                @ContinueDialogues.performed += instance.OnContinueDialogues;
+                @ContinueDialogues.canceled += instance.OnContinueDialogues;
+                @PressAnyKey.started += instance.OnPressAnyKey;
+                @PressAnyKey.performed += instance.OnPressAnyKey;
+                @PressAnyKey.canceled += instance.OnPressAnyKey;
             }
         }
     }
@@ -200,5 +313,7 @@ public partial class @PlayerMove : IInputActionCollection2, IDisposable
     {
         void OnMouseLeftClick(InputAction.CallbackContext context);
         void OnMouseScroll(InputAction.CallbackContext context);
+        void OnContinueDialogues(InputAction.CallbackContext context);
+        void OnPressAnyKey(InputAction.CallbackContext context);
     }
 }

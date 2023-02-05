@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(BoxCollider2D))]
 public class SpriteInteract : MonoBehaviour
 {
+    private CameraPanNPinch cameraPanNPinch;
     [Header("Camera")]
     [SerializeField, Tooltip("Get the touch position")] private Camera cam;
     [SerializeField, Tooltip("Set the minimun distance of the camera to interact")] private float minDistance; 
@@ -21,14 +22,19 @@ public class SpriteInteract : MonoBehaviour
         {
             cam = FindObjectOfType<Camera>();
         }
+
+        cameraPanNPinch = FindObjectOfType<CameraPanNPinch>();  
     }
 
     public void OnMouseDown()
     {
         if (cam.orthographicSize <= minDistance)
         { 
-            Debug.Log("hit");
-            interactAction.Invoke();
+            if(cameraPanNPinch.canMove)
+            {
+                Debug.Log("hit");
+                interactAction.Invoke();
+            }            
         }
     }
 }
