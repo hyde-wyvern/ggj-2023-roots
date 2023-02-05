@@ -5,11 +5,11 @@ using UnityEngine;
 public class ObjectSwap : MonoBehaviour
 {
     #region Scripts
-    [SerializeField] private TimeManager timeManager;
+    private TimeManager timeManager;
     #endregion
 
     [Tooltip("The year in game that is going to change")]
-    public float yearToChange;
+    private float yearToChange;
     [Space]
     [Tooltip("Add in order (past to present)")]
     public GameObject[] objectsAlongTime;
@@ -28,17 +28,18 @@ public class ObjectSwap : MonoBehaviour
 
         for (int i = 0; i < yearsAlongTime.Length; i++)
         {
-            if (yearsAlongTime[i] == yearToChange)
+            if (yearsAlongTime[i] <= yearToChange)
             {
+                Debug.Log("Year " + yearsAlongTime[i]);
                 for (int j = 0; j < objectsAlongTime.Length; j++)
                 {
                     if(j != i)
                     {
-                        objectsAlongTime[i].SetActive(true);   
+                        objectsAlongTime[j].SetActive(false);   
                     }
                     else
                     {
-                        objectsAlongTime[i].SetActive(false);
+                        objectsAlongTime[i].SetActive(true);
                     }
                 }
             }

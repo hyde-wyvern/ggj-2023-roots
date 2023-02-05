@@ -339,24 +339,4 @@ public class SoundManager : MonoBehaviour
         buttonSFX.clip = clip;
         buttonSFX.Play();
     }
-
-    public void ChangeSong()
-    {
-        music.Stop();
-        musicIdx = (musicIdx + 1) % levels.Length;
-        music.clip = levels[musicIdx];
-        music.Play();
-        Debug.Log("Ahora suena " + music.clip.name + " con una duracion de " + music.clip.length);
-        //StartCoroutine(ChangeSongPlaying());
-    }
-
-    private IEnumerator ChangeSongPlaying()
-    {
-        Debug.Log("Ahora suena " + music.clip.name + " con una duracion de " + music.clip.length);
-        yield return new WaitForSeconds(music.clip.length);
-        music.Stop();
-        musicIdx = (musicIdx + 1) % levels.Length;
-        music.clip = levels[musicIdx];
-        music.Play();
-    }
 }
