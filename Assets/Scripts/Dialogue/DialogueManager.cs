@@ -328,8 +328,8 @@ public class DialogueManager : MonoBehaviour
 					portraitSetter.SetPortrait(tagValue);
                     break;
                 case LAYOUT_TAG:
+                    layoutAnimator.Rebind();
                     layoutAnimator.Play(tagValue);
-                    Debug.Log("Layout: " + tagValue + " | Active: " + layoutAnimator.isActiveAndEnabled + " | Initialized: " + layoutAnimator.GetCurrentAnimatorStateInfo(0).IsName(tagValue));
                     break;
                 case AUDIO_TAG:
                     SetCurrentAudioInfo(tagValue);

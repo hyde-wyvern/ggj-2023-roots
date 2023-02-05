@@ -6,5 +6,5 @@ and we now know there's no frontier far enough that'll shatter our desire for di
 Were we'll go next? In which far away paradise will we set our sight 10 years from now? #speaker: TV #portrait: tv #layout: right #audio: narrator
 I might not be aroud to figure it out, but you will... #speaker: TV #portrait: tv #layout: right #audio: narrator
 That's everything for today's episode. Never give up your curiosity... #speaker: TV #portrait: tv #layout: right #audio: narrator
-and let it guide you into the vastness of the tomorrow... #speaker: TV #portrait: tv #layout: right #audio: narrator
+and let it guide you into the vastness of tomorrow... #speaker: TV #portrait: tv #layout: right #audio: narrator
 -> END
