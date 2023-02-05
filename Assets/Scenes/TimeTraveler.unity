@@ -6843,10 +6843,7 @@ MonoBehaviour:
   - {fileID: 392211443}
   - {fileID: 1998685985}
   defaultAudioInfo: {fileID: 11400000, guid: 11d80b7ae0d434f48990c234fa93ebad, type: 2}
-  audioInfo:
-  - {fileID: 11400000, guid: 8e56837f41fd91b4e921fcdcf3a1885c, type: 2}
-  - {fileID: 11400000, guid: 5898147b9025f0b4ea25eb89ced75bd8, type: 2}
-  - {fileID: 11400000, guid: babbe19c50f655b4d8663a104b9105a8, type: 2}
+  voices: {fileID: 11400000, guid: ac7fc5a28901c484fa485d83755a26f7, type: 2}
   makePreditable: 1
 --- !u!1 &1989511194
 GameObject:

@@ -31,10 +31,9 @@ public class DialogueManager : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private DialogueAudioInfoSO defaultAudioInfo;
-    [SerializeField] private DialogueAudioInfoSO[] audioInfo;
+    [SerializeField] private VoicesLibrary voices;
     [SerializeField] private bool makePreditable;
     private DialogueAudioInfoSO currentAudioInfo;
-    private Dictionary<string, DialogueAudioInfoSO> audioInfosDictionary;
     private AudioSource audioSource;
 
     private static DialogueManager instance;
@@ -78,7 +77,6 @@ public class DialogueManager : MonoBehaviour
     private void Start()
     {
         ExitDialogueMode();
-        InitializeAudioInfoDictionaty();
     }
 
     public static DialogueManager GetInstance()
@@ -86,28 +84,19 @@ public class DialogueManager : MonoBehaviour
         return instance;
     }
 
-    private void InitializeAudioInfoDictionaty()
-    {
-        audioInfosDictionary = new Dictionary<string, DialogueAudioInfoSO>();
-        audioInfosDictionary.Add(defaultAudioInfo.id, defaultAudioInfo);
-        foreach (DialogueAudioInfoSO audioInfoSO in audioInfo)
-        {
-            audioInfosDictionary.Add(audioInfoSO.id, audioInfoSO);
-        }
-    }
 
     private void SetCurrentAudioInfo(string id)
     {
-        DialogueAudioInfoSO audioInfo = null;
-        audioInfosDictionary.TryGetValue(id, out audioInfo);
-        if(audioInfo != null)
+        DialogueAudioInfoSO targetVoice = voices.voices.Find(voice => voice.id == id);
+
+        if (!targetVoice)
         {
-            this.currentAudioInfo = audioInfo;
+			Debug.LogError("Failed to find audio info for id: " + id);
+            return;
         }
-        else
-        {
-            Debug.LogError("Failed to find audio info for id: " + id);
-        }
+
+        currentAudioInfo = targetVoice;
+       
     }
 
     public void SetDialogue(TextAsset inkJSON)
